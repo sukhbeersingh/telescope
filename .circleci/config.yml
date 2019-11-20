@@ -19,7 +19,7 @@ jobs:
     executor:
       name: win/vs2019
       shell: bash.exe
-    working_directory: ~/telescope
+    working_directory: /c/Users/circleci/telescope
     steps: 
       - checkout
       - run:
