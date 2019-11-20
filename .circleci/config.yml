@@ -22,8 +22,15 @@ jobs:
     working_directory: ~/telescope
     steps: 
       - checkout
-      - run: npm ci
-      - run: npm test
+      - run:
+          command: |
+            cd ../
+            mv $CIRCLE_WORKING_DIRECTORY _old
+            git config --global core.autocrlf false
+            git clone --depth=50 _old $CIRCLE_WORKING_DIRECTORY
+            cd $CIRCLE_WORKING_DIRECTORY
+            npm ci
+            npm test
          
          
 workflows:
@@ -31,4 +38,3 @@ workflows:
     jobs:
       - buildlinux
       - buildwindows
-      
