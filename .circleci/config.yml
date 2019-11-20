@@ -1,10 +1,12 @@
 version: 2.1
+orbs:
+  win: circleci/windows@1.0.0
 jobs:
-  build:
+  buildlinux:
     working_directory: ~/telescope
     docker:
       - image: circleci/node:lts
-      - image: circleci/redis:latest
+      - image: circleci/redis:latest 
     steps:
       - checkout
       - run:
@@ -13,3 +15,20 @@ jobs:
       - run:
           name: Execute tests
           command: npm test
+  buildwindows:
+    executor:
+      name: win/vs2019
+      shell: bash.exe
+    working_directory: ~/telescope
+    steps: 
+      - checkout
+      - run: npm ci
+      - run: npm test
+         
+         
+workflows:
+  myworkflows:
+    jobs:
+      - buildlinux
+      - buildwindows
+      
