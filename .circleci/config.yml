@@ -24,6 +24,8 @@ jobs:
       - checkout
       - run:
           command: |
+            echo "pwd is $PWD"
+            echo $CIRCLE_WORKING_DIRECTORY
             cd ../
             mv $CIRCLE_WORKING_DIRECTORY _old
             git config --global core.autocrlf false
