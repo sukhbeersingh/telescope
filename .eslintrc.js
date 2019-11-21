@@ -28,5 +28,6 @@ module.exports = {
      * https://eslint.org/docs/rules/func-names
      */
     'func-names': 'off',
+    'linebreak-style': 0,
   },
 };
