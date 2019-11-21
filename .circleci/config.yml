@@ -6,7 +6,7 @@ jobs:
     working_directory: ~/telescope
     docker:
       - image: circleci/node:lts
-      - image: circleci/redis:latest 
+      - image: circleci/redis:latest
     steps:
       - checkout
       - run:
@@ -19,22 +19,12 @@ jobs:
     executor:
       name: win/vs2019
       shell: bash.exe
-    working_directory: /c/Users/circleci/telescope
-    steps: 
+    working_directory: ~/telescope
+    steps:
       - checkout
-      - run:
-          command: |
-            echo "pwd is $PWD"
-            echo $CIRCLE_WORKING_DIRECTORY
-            cd ../
-            mv $CIRCLE_WORKING_DIRECTORY _old
-            git config --global core.autocrlf false
-            git clone --depth=50 _old $CIRCLE_WORKING_DIRECTORY
-            cd $CIRCLE_WORKING_DIRECTORY
-            npm ci
-            npm test
-         
-         
+      - run: npm ci
+      - run: npm test
+
 workflows:
   myworkflows:
     jobs:
