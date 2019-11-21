@@ -9,7 +9,12 @@ module.exports = {
     es2017: true,
   },
   rules: {
-    'prettier/prettier': ['error'],
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
 
     /**
      * Disallow the use of console
@@ -28,6 +33,7 @@ module.exports = {
      * https://eslint.org/docs/rules/func-names
      */
     'func-names': 'off',
+
     'linebreak-style': 0,
   },
 };
