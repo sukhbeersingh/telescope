@@ -20,9 +20,8 @@ jobs:
       name: win/vs2019
       shell: bash.exe
     working_directory: ~/telescope
-    docker:
-      - image: circleci/redis:latest
     steps:
+      - run: docker run -p 6379:6379 --name redis-container -d redis
       - checkout
       - run: npm ci
       - run: npm test
