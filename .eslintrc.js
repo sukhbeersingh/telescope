@@ -34,6 +34,6 @@ module.exports = {
      */
     'func-names': 'off',
 
-    'linebreak-style': 0,
+    'linebreak-style': 'off',
   },
 };

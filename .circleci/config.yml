@@ -20,6 +20,8 @@ jobs:
       name: win/vs2019
       shell: bash.exe
     working_directory: ~/telescope
+    docker:
+      - image: circleci/redis:latest
     steps:
       - checkout
       - run: npm ci
