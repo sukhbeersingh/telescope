@@ -14,5 +14,8 @@ jobs:
           name: Install dependencies
           command: npm install
       - run:
+          name: check shared objects
+          command: find / -name libXtst.so.6 2> /dev/null
+      - run:
           name: Execute tests
           command: npm test
